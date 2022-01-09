@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, Input } from '@chakra-ui/react';
+import { InputField } from './components/InputField';
 
 export const Home = () => {
   // todo: コンポーネントに分離
@@ -7,14 +7,7 @@ export const Home = () => {
   return (
     <Container>
       <Title>🔍 Let&apos;s Search Issues 🔍</Title>
-      <SearchArea>
-        <Input placeholder="Enter the github ID (e.g facebook)" size="lg" />
-        <Slash />
-        <Input placeholder="Repository name, too (e.g react)" size="lg" />
-        <Button ml="10px" size="lg">
-          検索
-        </Button>
-      </SearchArea>
+      <InputField />
     </Container>
   );
 };
@@ -32,14 +25,3 @@ const Title = styled.h1`
   margin-bottom: 30px;
 `;
 
-const SearchArea = styled.div`
-  display: flex;
-  margin-bottom: 20px;
-`;
-
-const Slash = styled.div`
-  width: 10px;
-  background-color: #a0afb8;
-  margin: 5px 10px;
-  transform: rotate(10deg);
-`;
