@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import issueReducer from './issue/modules';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    issue: issueReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
