@@ -6,13 +6,14 @@ import { fetchIssueList } from '../../redux/issue/thunk';
 import { fetchRepositoryData } from '../../redux/repository/thunk';
 import { INITIAL_INPUT_VALUES } from './const';
 import { IssueList } from './components/IssueList';
+import { issueListSelector, issueSelector } from '../../redux/issue/selectors';
+import { repositorySelector } from '../../redux/repository/selectors';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
-  // todo: selector 整理
-  const { issueList } = useAppSelector((state) => state.issue);
-  const { fullName, openIssuesCount } = useAppSelector((state) => state.repository);
-  const { owner, repository, currenPageNumber } = useAppSelector((state) => state.issue);
+  const issueList = useAppSelector(issueListSelector);
+  const { fullName, openIssuesCount } = useAppSelector(repositorySelector);
+  const { owner, repository, currenPageNumber } = useAppSelector(issueSelector);
   const initialInputValues = { owner: INITIAL_INPUT_VALUES.OWNER, repository: INITIAL_INPUT_VALUES.REPOSITORY };
 
   useEffect(() => {
