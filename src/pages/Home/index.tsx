@@ -6,6 +6,7 @@ import { Pagination } from './components/Pagination';
 import { useEffect } from 'react';
 import { fetchIssueList } from '../../redux/issue/thunk';
 import { fetchRepositoryData } from '../../redux/repository/thunk';
+import { INITIAL_INPUT_VALUES } from './const';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -13,10 +14,11 @@ export const Home = () => {
   const { issueList } = useAppSelector((state) => state.issue);
   const { fullName, openIssuesCount } = useAppSelector((state) => state.repository);
   const { owner, repository, currenPageNumber } = useAppSelector((state) => state.issue);
+  const initialInputValues = { owner: INITIAL_INPUT_VALUES.OWNER, repository: INITIAL_INPUT_VALUES.REPOSITORY };
 
   useEffect(() => {
-    dispatch(fetchIssueList({ owner, repository, page: currenPageNumber }));
-    dispatch(fetchRepositoryData({ owner, repository }));
+    dispatch(fetchIssueList({ ...initialInputValues, page: currenPageNumber }));
+    dispatch(fetchRepositoryData(initialInputValues));
   }, [owner, repository, currenPageNumber, dispatch]);
 
   return (
