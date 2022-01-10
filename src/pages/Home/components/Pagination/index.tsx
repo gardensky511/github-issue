@@ -10,7 +10,7 @@ type Props = {
 export const Pagination = ({ openIssuesCount }: Props) => {
   const pageCount = Math.ceil(openIssuesCount / ISSUE_COUNT_PER_PAGE);
   const { handlePageNumberClick } = useHandler();
-  const onPageChange = (event: { selected: number }) => handlePageNumberClick(event.selected);
+  const onPageChange = (event: { selected: number }) => handlePageNumberClick(event.selected + 1);
 
   return (
     <ReactPaginate
