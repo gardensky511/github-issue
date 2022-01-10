@@ -1,6 +1,7 @@
 import { css } from '@emotion/css';
 import ReactPaginate from 'react-paginate';
 import { ISSUE_COUNT_PER_PAGE } from '../../const';
+import { useHandler } from '../../hooks/useHandler';
 
 type Props = {
   openIssuesCount: number;
@@ -8,6 +9,8 @@ type Props = {
 
 export const Pagination = ({ openIssuesCount }: Props) => {
   const pageCount = Math.ceil(openIssuesCount / ISSUE_COUNT_PER_PAGE);
+  const { handlePageNumberClick } = useHandler();
+  const onPageChange = (event: { selected: number }) => handlePageNumberClick(event.selected);
 
   return (
     <ReactPaginate
@@ -21,6 +24,7 @@ export const Pagination = ({ openIssuesCount }: Props) => {
       previousClassName={styles.paginationItem}
       nextClassName={styles.paginationItem}
       activeClassName={styles.activated}
+      onPageChange={onPageChange}
     />
   );
 };

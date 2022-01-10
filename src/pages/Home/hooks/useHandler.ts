@@ -1,10 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import { fetchIssueList } from '../../../redux/issue/thunk';
-import { GetIssueListParam } from '../../../types/issue';
 import { useAppDispatch } from '../../../redux/store';
-import { fetchRepositoryData } from '../../../redux/repository/thunk';
-
+import { setCurrentPageNumber, setOwner, setRepository } from '../../../redux/issue/modules';
 import { InputValues } from '../types';
+
 export const useHandler = () => {
   const dispatch = useAppDispatch();
   const [inputValues, setInputValues] = useState<InputValues>({ owner: '', repository: '', page: 1 });
@@ -15,12 +13,18 @@ export const useHandler = () => {
   };
 
   const handleClick = () => {
-    dispatch(fetchIssueList(inputValues));
-    dispatch(fetchRepositoryData(inputValues));
+    dispatch(setOwner(inputValues.owner));
+    dispatch(setRepository(inputValues.repository));
+  };
+
+  const handlePageNumberClick = (pageNumber: number) => {
+    dispatch(setCurrentPageNumber(pageNumber));
+    window.scrollTo(0, 0);
   };
 
   return {
     handleChange,
     handleClick,
+    handlePageNumberClick,
   };
 };

@@ -1,12 +1,23 @@
 import styled from '@emotion/styled';
-import { useAppSelector } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { InputField } from './components/InputField';
 import { ListCard } from './components/ListCard';
 import { Pagination } from './components/Pagination';
+import { useEffect } from 'react';
+import { fetchIssueList } from '../../redux/issue/thunk';
+import { fetchRepositoryData } from '../../redux/repository/thunk';
 
 export const Home = () => {
+  const dispatch = useAppDispatch();
+  // todo: selector 整理
   const { issueList } = useAppSelector((state) => state.issue);
   const { fullName, openIssuesCount } = useAppSelector((state) => state.repository);
+  const { owner, repository, currenPageNumber } = useAppSelector((state) => state.issue);
+
+  useEffect(() => {
+    dispatch(fetchIssueList({ owner, repository, page: currenPageNumber }));
+    dispatch(fetchRepositoryData({ owner, repository }));
+  }, [owner, repository, currenPageNumber, dispatch]);
 
   return (
     <Container>
