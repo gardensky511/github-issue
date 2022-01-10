@@ -6,16 +6,16 @@ import { fetchRepositoryData } from '../../../redux/repository/thunk';
 
 export const useHandler = () => {
   const dispatch = useAppDispatch();
-  const [getIssueParam, setGetIssueParam] = useState<GetIssueListParam>({ owner: '', repository: '' });
+  const [inputValues, setInputValues] = useState<GetIssueListParam>({ owner: '', repository: '' });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setGetIssueParam({ ...getIssueParam, [name]: value });
+    setInputValues({ ...inputValues, [name]: value });
   };
 
   const handleClick = () => {
-    dispatch(fetchIssueList(getIssueParam));
-    dispatch(fetchRepositoryData(getIssueParam));
+    dispatch(fetchIssueList(inputValues));
+    dispatch(fetchRepositoryData(inputValues));
   };
 
   return {
