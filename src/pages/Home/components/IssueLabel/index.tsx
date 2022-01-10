@@ -5,6 +5,7 @@ type Props = {
   color: string;
 };
 
+export const IssueLabel = ({ color, name }: Props) => <Container color={color}>{name}</Container>;
 
 const Container = styled.div<{ color: string }>`
   background-color: #${({ color }) => color};

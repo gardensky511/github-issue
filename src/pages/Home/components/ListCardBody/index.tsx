@@ -1,5 +1,5 @@
 import { MAX_ISSUE_BODY_LENGTH } from '../../const';
-import { Label } from '../Label';
+import { IssueLabel } from '../IssueLabel';
 import styled from '@emotion/styled';
 import { IssueState, Label } from '../../../../types/issue';
 
@@ -24,7 +24,7 @@ export const ListCardBody = ({ number, state, title, body, comments, labels }: P
       <Comments>{comments} comments</Comments>
       <Labels>
         {labels.map(({ id, ...label }) => (
-          <Label key={id} {...label} />
+          <IssueLabel key={id} {...label} />
         ))}
       </Labels>
     </Container>
