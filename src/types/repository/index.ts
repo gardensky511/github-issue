@@ -8,3 +8,7 @@ export type RepositoryData = {
   open_issues_count: number;
 };
 
+export type RepositoryState = {
+  fullName: string;
+  openIssuesCount: number;
+};
