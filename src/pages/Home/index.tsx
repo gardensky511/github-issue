@@ -1,13 +1,18 @@
 import styled from '@emotion/styled';
+import { useAppSelector } from '../../redux/store';
 import { InputField } from './components/InputField';
+import { ListCard } from './components/ListCard';
 
 export const Home = () => {
-  // todo: コンポーネントに分離
-  // todo: イベントハンドラー実装
+  const { issueList } = useAppSelector((state) => state.issue);
+
   return (
     <Container>
       <Title>🔍 Let&apos;s Search Issues 🔍</Title>
       <InputField />
+      {issueList.map((issue) => (
+        <ListCard key={issue.id} {...issue} />
+      ))}
     </Container>
   );
 };
@@ -24,4 +29,3 @@ const Title = styled.h1`
   font-weight: 900;
   margin-bottom: 30px;
 `;
-
