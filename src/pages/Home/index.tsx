@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useAppSelector } from '../../redux/store';
 import { InputField } from './components/InputField';
 import { ListCard } from './components/ListCard';
+import { Pagination } from './components/Pagination';
 
 export const Home = () => {
   const { issueList } = useAppSelector((state) => state.issue);
@@ -17,6 +18,7 @@ export const Home = () => {
       {issueList.map((issue) => (
         <ListCard key={issue.id} {...issue} />
       ))}
+      <Pagination openIssuesCount={openIssuesCount} />
     </Container>
   );
 };
