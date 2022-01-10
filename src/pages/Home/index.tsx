@@ -14,11 +14,10 @@ export const Home = () => {
   const issueList = useAppSelector(issueListSelector);
   const { fullName, openIssuesCount } = useAppSelector(repositorySelector);
   const { owner, repository, currenPageNumber } = useAppSelector(issueSelector);
-  const initialInputValues = { owner: INITIAL_INPUT_VALUES.OWNER, repository: INITIAL_INPUT_VALUES.REPOSITORY };
 
   useEffect(() => {
-    dispatch(fetchIssueList({ ...initialInputValues, page: currenPageNumber }));
-    dispatch(fetchRepositoryData(initialInputValues));
+    dispatch(fetchIssueList({ owner, repository, page: currenPageNumber }));
+    dispatch(fetchRepositoryData({ owner, repository }));
   }, [owner, repository, currenPageNumber, dispatch]);
 
   return (
