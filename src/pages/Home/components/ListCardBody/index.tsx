@@ -1,7 +1,7 @@
-import { MAX_ISSUE_BODY_LENGTH } from '../../const';
 import { IssueLabel } from '../IssueLabel';
 import styled from '@emotion/styled';
 import { IssueState, Label } from '../../../../types/issue';
+import { formatBody } from './logics/formatBody';
 
 type Props = {
   title: string;
@@ -20,7 +20,7 @@ export const ListCardBody = ({ number, state, title, body, comments, labels }: P
         #{number} / {state}
       </NumberAndState>
       <Title>{title}</Title>
-      <Body>{body.length > MAX_ISSUE_BODY_LENGTH ? `${body.substring(0, MAX_ISSUE_BODY_LENGTH)}...` : body}</Body>
+      <Body>{formatBody(body)}</Body>
       <Comments>{comments} comments</Comments>
       <Labels>
         {labels.map(({ id, ...label }) => (
