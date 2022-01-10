@@ -7,5 +7,5 @@ export const AXIOS = axios.create({
 });
 
 export const END_POINT = {
-  GET_ISSUE_LIST: ({ owner, repository }: GetIssueListParam) => `/repos/${owner}/${repository}/issues`,
+  GET_ISSUE_LIST: ({ owner, repository }: GetIssueListParam) => `/repos/${owner}/${repository}/issues?per_page=15`,
 };
