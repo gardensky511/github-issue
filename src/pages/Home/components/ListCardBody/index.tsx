@@ -1,9 +1,17 @@
 import { MAX_ISSUE_BODY_LENGTH } from '../../const';
 import { Label } from '../Label';
 import styled from '@emotion/styled';
-import { Issue } from '../../../../types/issue';
+import { IssueState, Label } from '../../../../types/issue';
 
-type Props = Omit<Issue, 'user'>;
+type Props = {
+  title: string;
+  number: number;
+  body: string;
+  labels: Label[];
+  comments_url: string;
+  state: IssueState;
+  comments: number;
+};
 
 export const ListCardBody = ({ number, state, title, body, comments, labels }: Props) => {
   return (

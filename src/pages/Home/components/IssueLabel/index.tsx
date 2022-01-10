@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { Label as LabelType } from '../../../../types/issue';
 
-type Props = Omit<LabelType, 'id'>;
+type Props = {
+  name: string;
+  color: string;
+};
 
-export const Label = ({ color, name }: Props) => <Container color={color}>{name}</Container>;
 
 const Container = styled.div<{ color: string }>`
   background-color: #${({ color }) => color};

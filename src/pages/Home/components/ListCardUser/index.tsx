@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
-import { IssueCreator as Props } from '../../../../types/issue';
+
+type Props = {
+  login: string;
+  avatar_url: string;
+};
 
 export const ListCardUser = ({ avatar_url, login }: Props) => {
   return (
