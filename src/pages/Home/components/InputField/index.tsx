@@ -1,15 +1,20 @@
 import styled from '@emotion/styled';
 import { Button, Input } from '@chakra-ui/react';
-import { useHandler } from '../../hooks/useHandler';
-import { INITIAL_INPUT_VALUES } from '../../const';
+import { ChangeEvent } from 'react';
+import { InputValues } from '../../types';
 
-export const InputField = () => {
-  const { handleClick, handleChange } = useHandler();
+type Props = {
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleClick: () => void;
+  inputValues: InputValues;
+};
+
+export const InputField = ({ handleChange, handleClick, inputValues }: Props) => {
   return (
     <Container>
-      <Input name="owner" onChange={handleChange} placeholder="Enter the github ID (e.g facebook)" size="lg" value={INITIAL_INPUT_VALUES.OWNER} />
+      <Input name="owner" onChange={handleChange} placeholder="Enter the github ID (e.g facebook)" size="lg" value={inputValues.owner} />
       <Slash />
-      <Input name="repository" onChange={handleChange} placeholder="Repository name, too (e.g react)" size="lg" value={INITIAL_INPUT_VALUES.REPOSITORY} />
+      <Input name="repository" onChange={handleChange} placeholder="Repository name, too (e.g react)" size="lg" value={inputValues.repository} />
       <Button ml="10px" size="lg" onClick={handleClick}>
         Search
       </Button>

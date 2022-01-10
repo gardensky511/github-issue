@@ -9,9 +9,10 @@ type Props = {
   openIssuesCount: number;
   fullName: string;
   issueList: Issue[];
+  handlePageNumberClick: (pageNumber: number) => void;
 };
 
-export const IssueList = ({ openIssuesCount, fullName, issueList }: Props) => {
+export const IssueList = ({ openIssuesCount, fullName, issueList, handlePageNumberClick }: Props) => {
   if (issueList.length === 0) return <Empty />;
 
   return (
@@ -22,7 +23,7 @@ export const IssueList = ({ openIssuesCount, fullName, issueList }: Props) => {
       {issueList.map(({ id, ...issue }) => (
         <ListCard key={id} {...issue} />
       ))}
-      <Pagination openIssuesCount={openIssuesCount} />
+      <Pagination openIssuesCount={openIssuesCount} handlePageNumberClick={handlePageNumberClick} />
     </Fragment>
   );
 };
