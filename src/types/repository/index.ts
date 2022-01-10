@@ -1,7 +1,6 @@
-export type GetRepositoryDataParam = {
-  owner: string;
-  repository: string;
-};
+import { InputValues } from '../../pages/Home/types';
+
+export type GetRepositoryDataParam = Omit<InputValues, 'page'>;
 
 export type RepositoryData = {
   full_name: string;

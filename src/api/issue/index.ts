@@ -1,6 +1,7 @@
 import { AXIOS, END_POINT } from '../const';
-import { GetIssueListParam, Issue } from '../../types/issue';
+import { InputValues } from '../../pages/Home/types';
+import { Issue } from '../../types/issue';
 
-export const getIssueList = (getIssueListParam: GetIssueListParam) => {
-  return AXIOS.get<Issue[]>(END_POINT.GET_ISSUE_LIST(getIssueListParam));
+export const getIssueList = (inputValues: InputValues) => {
+  return AXIOS.get<Issue[]>(END_POINT.GET_ISSUE_LIST(inputValues));
 };

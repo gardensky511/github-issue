@@ -4,9 +4,10 @@ import { GetIssueListParam } from '../../../types/issue';
 import { useAppDispatch } from '../../../redux/store';
 import { fetchRepositoryData } from '../../../redux/repository/thunk';
 
+import { InputValues } from '../types';
 export const useHandler = () => {
   const dispatch = useAppDispatch();
-  const [inputValues, setInputValues] = useState<GetIssueListParam>({ owner: '', repository: '' });
+  const [inputValues, setInputValues] = useState<InputValues>({ owner: '', repository: '', page: 1 });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

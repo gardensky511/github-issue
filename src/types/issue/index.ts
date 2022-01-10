@@ -22,8 +22,3 @@ export type Issue = {
   state: IssueState;
   comments: number;
 };
-
-export type GetIssueListParam = {
-  owner: string;
-  repository: string;
-};
