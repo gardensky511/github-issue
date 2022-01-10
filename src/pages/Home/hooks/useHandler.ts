@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { fetchIssueList } from '../../../redux/issue/thunk';
 import { GetIssueListParam } from '../../../types/issue';
 import { useAppDispatch } from '../../../redux/store';
+import { fetchRepositoryData } from '../../../redux/repository/thunk';
 
 export const useHandler = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ export const useHandler = () => {
 
   const handleClick = () => {
     dispatch(fetchIssueList(getIssueParam));
+    dispatch(fetchRepositoryData(getIssueParam));
   };
 
   return {
