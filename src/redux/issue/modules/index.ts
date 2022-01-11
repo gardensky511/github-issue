@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IssueState } from '../types';
 import { fetchIssueList } from '../thunk';
+import { INITIAL_INPUT_VALUES } from '../../../pages/Home/const';
 
 const initialState: IssueState = {
-  owner: '',
-  repository: '',
+  owner: INITIAL_INPUT_VALUES.OWNER,
+  repository: INITIAL_INPUT_VALUES.REPOSITORY,
   issueList: [],
   currenPageNumber: 1,
 };
