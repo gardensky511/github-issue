@@ -11,7 +11,14 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       // redux-thunk を使う action は serializableCheck しないように設定
-      serializableCheck: { ignoredActions: ['issue/fetchIssueList/fulfilled', 'issue/fetchIssueList/rejected'] },
+      serializableCheck: {
+        ignoredActions: [
+          'issue/fetchIssueList/fulfilled',
+          'issue/fetchIssueList/rejected',
+          'repository/fetchRepositoryData/fulfilled',
+          'repository/fetchRepositoryData/rejected',
+        ],
+      },
     }),
 });
 
