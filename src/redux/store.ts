@@ -8,18 +8,6 @@ export const store = configureStore({
     issue: issueReducer,
     repository: repositoryReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      // redux-thunk を使う action は serializableCheck しないように設定
-      serializableCheck: {
-        ignoredActions: [
-          'issue/fetchIssueList/fulfilled',
-          'issue/fetchIssueList/rejected',
-          'repository/fetchRepositoryData/fulfilled',
-          'repository/fetchRepositoryData/rejected',
-        ],
-      },
-    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
